@@ -100,7 +100,7 @@ var UpdateGroupCmd = &cobra.Command{
 }
 
 // DeleteGroupCmd
-// 	./ldapctl group update -c testg -d "测试分组1"
+// 	./ldapctl group delete -c testg
 var DeleteGroupCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "delete group",
@@ -118,7 +118,7 @@ var DeleteGroupCmd = &cobra.Command{
 }
 
 // AddUserToGroupCmd
-// 		./ldapctl group getall
+// 		./ldapctl group adduser -c test -u eryajf
 var AddUserToGroupCmd = &cobra.Command{
 	Use:   "adduser",
 	Short: "add user to group",
@@ -137,7 +137,7 @@ var AddUserToGroupCmd = &cobra.Command{
 }
 
 // RemoveUserFromGroupCmd
-// 		./ldapctl group getall
+// 		./ldapctl group removeuser -c test -u eryajf
 var RemoveUserFromGroupCmd = &cobra.Command{
 	Use:   "removeuser",
 	Short: "remove user to group",

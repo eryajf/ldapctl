@@ -1,4 +1,4 @@
-module ldapctl
+module github.com/eryajf/ldapctl
 
 go 1.17
 

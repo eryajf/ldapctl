@@ -16,7 +16,7 @@ limitations under the License.
 package cmd
 
 import (
-	"ldapctl/api/group"
+	"github.com/eryajf/ldapctl/api/group"
 
 	"github.com/spf13/cobra"
 )

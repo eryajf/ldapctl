@@ -2,7 +2,8 @@ package group
 
 import (
 	"fmt"
-	"ldapctl/public"
+
+	"github.com/eryajf/ldapctl/public"
 
 	"github.com/liushuochen/gotable"
 	"github.com/spf13/cobra"

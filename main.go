@@ -16,8 +16,8 @@ limitations under the License.
 package main
 
 import (
-	"ldapctl/cmd"
-	"ldapctl/public"
+	"github.com/eryajf/ldapctl/cmd"
+	"github.com/eryajf/ldapctl/public"
 )
 
 func main() {

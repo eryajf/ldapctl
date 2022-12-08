@@ -2,33 +2,36 @@ package public
 
 import (
 	"fmt"
-	"net"
-	"time"
 
+	"github.com/eryajf/ldapool"
 	ldap "github.com/go-ldap/ldap/v3"
 )
 
 // ========= test-ldap =============
 const (
-	LDAP_URL        = "ldap://localhost:390" // eryajf
+	LDAP_URL        = "ldap://localhost:389" // eryajf
 	LDAP_BASE_DN    = "dc=eryajf,dc=net"
 	LDAP_ADMIN_DN   = "cn=admin,dc=eryajf,dc=net"
-	LDAP_ADMIN_PASS = "123465"
+	LDAP_ADMIN_PASS = "123456"
 	LDAP_USER_DN    = "ou=People,dc=eryajf,dc=net"
 	LDAP_GROUP_DN   = "ou=Group,dc=eryajf,dc=net"
 )
 
 // Init ldap conn
 func InitCli() (l *ldap.Conn) {
-	l, err := ldap.DialURL(LDAP_URL, ldap.DialWithDialer(&net.Dialer{Timeout: 5 * time.Second}))
+	conn, err := ldapool.Open(ldapool.LdapConfig{
+		Url:       LDAP_URL,
+		BaseDN:    LDAP_BASE_DN,
+		AdminDN:   LDAP_ADMIN_DN,
+		AdminPass: LDAP_ADMIN_PASS,
+		MaxOpen:   30,
+		DsName:    "",
+	})
 	if err != nil {
-		panic(err)
+		panic(fmt.Sprintf("get conn failed:%v\n", err))
 	}
-	err = l.Bind(LDAP_ADMIN_DN, LDAP_ADMIN_PASS)
-	if err != nil {
-		panic(err)
-	}
-	return l
+
+	return conn
 }
 
 // GetGroupDN
